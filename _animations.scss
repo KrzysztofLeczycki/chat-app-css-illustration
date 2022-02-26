@@ -1,0 +1,119 @@
+$appear-time: 0.8s;
+
+.app{
+    animation-name: appear;
+    animation-duration: $appear-time;
+    animation-timing-function: ease-in;
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@mixin anim-appear-side($direction, $count) {
+    @if $direction == left{
+        animation-name: appear-left-#{$count};
+    } @else if $direction == right{
+        animation-name: appear-right-#{$count};
+    }
+    animation-duration: $appear-time;
+    animation-timing-function: ease-in;
+    animation-delay: $appear-time * $count + 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@mixin kf-appear-side($direction, $count) {
+    @keyframes appear-#{$direction}-#{$count} {
+        @if $direction == left{
+            0%{
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        } @else if $direction == right{
+            0%{
+                opacity: 0;
+                transform: translateX(50px);
+            }
+        }
+
+        100%{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+@mixin anim-increase($count) {
+    animation-name: increase;
+    animation-duration: $appear-time;
+    animation-timing-function: ease-in;
+    animation-delay: $appear-time * $count + 0.2s;
+    animation-fill-mode: forwards;
+}
+
+    @keyframes increase {
+        0%{
+            transform: scale(0);
+        }
+
+        100%{
+            transform: scale(1);
+        }
+    }
+
+@for $count from 1 through 2 {
+    .anim-#{$count}{
+        @include anim-appear-side(left, $count);
+    }
+    @include kf-appear-side(left, $count);
+}
+
+@for $count from 3 through 5{
+    .anim-#{$count}{
+        @include anim-increase($count);
+    }
+}
+
+@for $count from 6 through 7 {
+    .anim-#{$count}{
+        @include anim-appear-side(right, $count);
+    }
+    @include kf-appear-side(right, $count);
+}
+
+@for $count from 8 through 10 {
+    .anim-#{$count}{
+        @include anim-appear-side(left, $count);
+    }
+    @include kf-appear-side(left, $count);
+}
+
+@keyframes flash {
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+@for $i from 1 to 4{
+    .dot:nth-of-type(#{$i}){
+        animation-name: flash;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-delay: 0.25s * $i;
+        animation-iteration-count: infinite;
+    }
+}

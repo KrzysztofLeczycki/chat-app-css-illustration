@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+@import 'variables';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    font-family: 'Rubik', sans-serif;
+    font-size: $basic-font-size;
+}
+
+section{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+}
+
+section::before{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 50%;
+    background-color: $moderate-violet;
+    border-bottom-right-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+section::after{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 50%;
+    background-color: $light-grayish-violet;
+    border-top-left-radius: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@mixin gradients($color1, $color2) {
+    background-image: linear-gradient(to left, $color1, $color2);
+    background-image: -moz-linear-gradient(to left, $color1, $color2);
+    background-image: -webkit-linear-gradient(to left, $color1, $color2);
+    background-image: -o-linear-gradient(to left, $color1, $color2);
+}
+
+@mixin borders-radius($tl, $tr, $br, $bl) {
+    border-top-left-radius: $tl;
+    border-top-right-radius: $tr;
+    border-bottom-right-radius: $br;
+    border-bottom-left-radius: $bl;
+}
+
+.app{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    max-width: 230px;
+    border-radius: $biggest;
+    border: solid $free-space $white;
+    background-color: $light-grayish-violet;
+    box-shadow: 0 0 30px $dark-violet;
+
+    .app-header{
+        @include gradients($light-magenta, $light-violet);
+        @include borders-radius($big, $big, $smallest, $smallest);
+        padding-bottom: 1px;
+    
+     .cut{
+        background-color: $white;
+        width: 130px;
+        height: $moderate;
+        @include borders-radius(0, 0, $moderate, $moderate);
+        margin: 0 auto;
+    }
+
+    .avatar-box{
+        margin: $free-space;
+        display: flex;
+        align-items: center;
+        gap: $free-space;
+        position: relative;
+
+        .name, i {
+            font-size: 0.7rem;
+            color: $white;
+        }
+
+        .chevron-left{
+            transform: scale(0.4, 1);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: $white;
+        }
+
+        img{
+            width: $big;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: solid 2px $white;
+        }
+
+        .name{
+            font-weight: 500;
+        }
+
+        .status{
+            font-size: 0.5rem;
+            color: $white;
+            opacity: 0.5;
+        }
+
+        i{
+            position: absolute;
+            right: 0;
+        }
+    }
+    }
+
+    .chat{
+        padding: $free-space;
+        display: grid;
+        gap: $moderate;
+    
+
+    .walker, .customer{
+        font-size: 0.55rem;
+        padding: $smallest $free-space;
+        max-width: 60%;
+        line-height: 1.35em;
+        opacity: 0;
+    }
+
+    .walker{
+        color: $moderate-violet;
+        background-color: #ebe2f3;
+        @include borders-radius($free-space, $free-space, $free-space, $smallest)
+    }
+
+    .customer-wrapper, .walker-wrapper{
+       display: grid;
+       gap: $free-space;
+    }
+
+    .customer-wrapper{
+        .customer{
+            color: $dark-violet;
+            background-color: $white;
+            @include borders-radius($free-space, $free-space, $free-space, $moderate);
+            justify-self: end;
+        }
+    
+        .img-set{
+            justify-self: end;
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+            gap: $free-space;
+            
+            img{
+                width: 40px;
+                aspect-ratio: 1;
+                border-radius: $free-space;
+                line-height: 0;
+                border: none;
+                transform: scale(0);
+            }
+        }
+    }
+   
+    .offert{
+        font-size: 0.55rem;
+        padding: $free-space;
+        @include borders-radius($free-space, $free-space, $free-space, $smallest);
+        @include gradients($light-violet, $light-magenta);
+        color: $white;
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        
+        .service{
+            opacity: 0.6;
+            
+            i{
+                font-size: 0.6rem;
+                padding-right: $smallest;
+            }
+        }
+
+        .price{
+            font-weight: 500;
+            font-size: 0.75rem;
+            margin-right: $free-space;
+        }
+    }
+    }
+
+    .form-sim{
+        background-color: $white;
+        border-radius: $big;
+        padding: $smallest $smallest $smallest $big ;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .input{
+            color: $dark-grayish-violet;
+            font-size: 0.65rem;
+        }
+
+        .btn{
+            text-align: center;
+            line-height: 1em;
+            width: 16px;
+            aspect-ratio: 1/1;
+            font-size: 0.9rem;
+            padding: $smallest;
+            color: $white;
+            background-color: $very-dark-violet;
+            border-radius: 50%;
+            font-weight: 700;  
+    }
+}
+}
+
+.info{
+    margin: 0 auto;
+    h2{
+        color: $very-dark-violet;
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+
+    p{
+        color: $dark-grayish-violet;
+        line-height: 1.5em;
+        text-align: center;
+        max-width: 300px;
+    }
+}
+
+@media(min-width: 700px){
+    section{
+        width: 100%;
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+       gap: 5%;
+
+       .app{
+           margin: 0;
+       }
+
+        .info{
+            margin: 0;
+            
+            p{
+                text-align: left;
+                max-width: 400px;
+            }
+        }
+    }
+
+    section::before{
+        width: 35%;
+        height: 90%;
+        @include borders-radius(0, 0, 50%, 50%);
+    }
+    
+    section::after{
+        width: 30%;
+        height: 90%;
+        @include borders-radius(50%, 50%, 0, 0);
+    }
+}
+
+@media(min-width: 900px){
+    section{
+       gap: 10%;
+
+       .app{
+           margin: 0 0 0 10%;
+       }
+    }
+}
+
+.attribution { 
+    font-size: 14px; 
+    text-align: center;
+    padding: 1em; 
+
+    a { 
+        color: hsl(228, 45%, 44%); 
+    }
+}
+
+@import 'animations';
